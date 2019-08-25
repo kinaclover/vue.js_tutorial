@@ -8,17 +8,34 @@
     <body>
         <div id="app">
             <!-- Tutorial -->
-            <p>{{message}}</p>
+            <p>{{message.value}}</p>
+            <p>{{message.value.length}}</p>
+            <p>{{list[2]}}</p>
+            <p>{{list[num]}}</p>
             <ol>
                 <li v-for="item in list">{{item}}</li>
             </ol>
             <button v-on:click="handleClick">Click!</button>
-            <input v-model="message"/>
+            <input v-model="message.value"/>
+            <input type="text" v-bind:value="message.value.length"/>
             <br/>
             <button v-on:click="show=!show">Change 'Show'</button>
             <transition>
                 <p v-if="show">Can you see this sentance?</p>
             </transition>
+            <br/>
+            <!-- Check the data -->
+            <pre>{{ $data }}</pre>
+            <br/>
+            <p>You click button {{count}} times.</p>
+            <button v-on:click="increment">Let's count!</button>
+            <img v-bind="item"/>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <circle cx="100" cy="75" v-bind:r="radius" fill="lightgrey"/>
+                </svg>
+                <input type="range" min="0" max="100" v-model="radius"/>
+            </div>
         </div>
         <script src="source/vue.js"></script>
         <script src="source/main.js"></script>
